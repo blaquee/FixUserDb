@@ -4,6 +4,10 @@ import logging
 import traceback
 import re
 
+if not (sys.version_info > (3,0)):
+    import io
+else:
+    pass
 
 
 if __name__ == "__main__" :
@@ -24,8 +28,9 @@ if __name__ == "__main__" :
     uDuplicateCnt = 0
     uSameSigWithDiffNameCnt = 0
 
-    with open( strFilePath , "rt" , encoding="utf8" ) as fileUserDb :
-        with open( strNewUserDbPath , "wt" , encoding="utf8" ) as fileNewUserDb :
+
+    with io.open( strFilePath , "rt" , encoding="utf8" ) as fileUserDb :
+        with io.open( strNewUserDbPath , "wt" , encoding="utf8" ) as fileNewUserDb :
             strLine = None
             strCurrentSection = ""
             pairKeyVal = None
@@ -70,16 +75,17 @@ if __name__ == "__main__" :
                                             uDuplicateCnt = uDuplicateCnt + 1
                                             bValidSection = False
                                             strSecBuffer = ""
-                                            print( "Duplicate entry:\n[{}]\n{}\n".format(strCurrentSection,pairKeyVal[1]) )
+                                            print( "Duplicate entry:\n[{}]\n{}\n".format(strCurrentSection.encode('utf-8'),pairKeyVal[1].encode('utf-8')) )
                                             break
                                     else :
                                         uSameSigWithDiffNameCnt = uSameSigWithDiffNameCnt + 1
-                                        mapSigSections[pairKeyVal[1]].append( strCurrentSection )
-                                        print( "Same signature with different name:\n[{}]\n{}\n".format(pairKeyVal[1] , ",".join(mapSigSections[pairKeyVal[1]])) )
+                                        mapSigSections[pairKeyVal[1].encode('utf-8')].append( strCurrentSection.encode('utf-8') )
+                                        print( "Same signature with different name:\n[{}]\n{}\n".format(pairKeyVal[1].encode('utf-8') ,
+                                        ",".join(mapSigSections[pairKeyVal[1].encode('utf-8')])) )
                                 else :
-                                    mapSigSections[pairKeyVal[1]] = list()
-                                    mapSigSections[pairKeyVal[1]].append( strCurrentSection )
-                                
+                                    mapSigSections[pairKeyVal[1].encode('utf-8')] = list()
+                                    mapSigSections[pairKeyVal[1].encode('utf-8')].append( strCurrentSection.encode('utf-8') )
+
 
                     if ( bValidSection != False ) :
                         strSecBuffer += strLine + "\n"
@@ -98,4 +104,3 @@ if __name__ == "__main__" :
     print( "Same signature with different name: {}".format( uSameSigWithDiffNameCnt ) )
     print( "Press any key to leave" )
     input()
- 

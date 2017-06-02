@@ -18748,6 +18748,10 @@ ep_only = true
 signature = 53 51 52 56 57 55 E8 ?? ?? ?? ?? 5D 8B CD 81 ?? ?? ?? ?? ?? 2B ?? ?? ?? ?? ?? 83
 ep_only = true
 
+[PcShare 檔案捆綁器 v4.0 -> 無可非議]
+signature = 55 8B EC 6A FF 68 90 34 40 00 68 B6 28 40 00 64 A1
+ep_only = true
+
 [PCShrink 0.71 beta]
 signature = 01 AD 54 3A 40 00 FF B5 50 3A 40 00 6A 40 FF 95 88 3A 40 00
 ep_only = true
@@ -19714,6 +19718,10 @@ ep_only = true
 
 [UPX v1.25 (Delphi) Stub]
 signature = 60 BE 00 ?? ?? 00 8D BE 00 ?? ?? FF
+ep_only = true
+
+[UPX-SCRAMBLER 3.06 -> 呢nT峨L]
+signature = E8 00 00 00 00 59 83 C1 07 51 C3 C3 BE ?? ?? ?? ?? 83 EC 04 89 34 24 B9 80 00 00 00 81 36 ?? ?? ?? ?? 50 B8 04 00 00 00 50 03 34 24 58 58 83 E9 03 E2 E9 EB D6
 ep_only = true
 
 [UPX-Scrambler RC v1.x]
