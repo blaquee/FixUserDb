@@ -10,6 +10,7 @@ global _mainexe
 extern _mainCRTStartup
 
 section .text
+_mainexe:
 db %s
 call _mainCRTStartup
 ret
